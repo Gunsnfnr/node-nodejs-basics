@@ -8,9 +8,9 @@ const __dirname = path.dirname(__filename);
 
 const remove = async () => {
   try {
-    await access(path.join(__dirname, "/files/fileToRemove.txt"));
+    await access(path.join(__dirname, "files", "fileToRemove.txt"));
 
-    fsPromises.rm(path.join(__dirname, "/files/fileToRemove.txt"));
+    fsPromises.rm(path.join(__dirname, "files", "fileToRemove.txt"));
   } catch (err) {
     throw new Error("FS operation failed");
   }

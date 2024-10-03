@@ -12,16 +12,16 @@ export function throwFSFailureError() {
 
 const create = async () => {
   try {
-    await access(path.join(__dirname, "files/fresh.txt"));
+    await access(path.join(__dirname, "files", "fresh.txt"));
     fsPromises
-      .readFile(path.join(__dirname, "files/fresh.txt"))
+      .readFile(path.join(__dirname, "files", "fresh.txt"))
       .then((data) => {
         throw new Error("FS operation failed");
       })
       .catch(err);
   } catch (err) {
     const promise = fsPromises.writeFile(
-      path.join(__dirname, "files/fresh.txt"),
+      path.join(__dirname, "files", "fresh.txt"),
       "I am fresh and young"
     );
     await promise;

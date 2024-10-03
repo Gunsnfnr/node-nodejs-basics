@@ -8,12 +8,12 @@ const __dirname = path.dirname(__filename);
 
 const copy = async () => {
   try {
-    await access(path.join(__dirname, "/files"));
+    await access(path.join(__dirname, "files"));
 
     fsPromises
       .cp(
-        path.join(__dirname, "/files"),
-        path.join(__dirname, "/files_copy "),
+        path.join(__dirname, "files"),
+        path.join(__dirname, "files_copy "),
         { recursive: true, force: false, errorOnExist: true },
         (err) => {
           if (err) {
