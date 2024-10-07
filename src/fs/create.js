@@ -1,5 +1,4 @@
 import * as fsPromises from "node:fs/promises";
-import { access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "url";
 
@@ -12,19 +11,13 @@ export function throwFSFailureError() {
 
 const create = async () => {
   try {
-    await access(path.join(__dirname, "files", "fresh.txt"));
-    fsPromises
-      .readFile(path.join(__dirname, "files", "fresh.txt"))
-      .then((data) => {
-        throw new Error("FS operation failed");
-      })
-      .catch(err);
-  } catch (err) {
-    const promise = fsPromises.writeFile(
+    await fsPromises.writeFile(
       path.join(__dirname, "files", "fresh.txt"),
-      "I am fresh and young"
+      "I am fresh and young",
+      { flag: wx }
     );
-    await promise;
+  } catch (err) {
+    throw new Error("FS operation failed");
   }
 };
 

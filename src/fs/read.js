@@ -1,4 +1,4 @@
-import { access, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "url";
 
@@ -7,8 +7,6 @@ const __dirname = path.dirname(__filename);
 
 const read = async () => {
   try {
-    await access(path.join(__dirname, "files", "fileToRead.txt"));
-
     const contents = await readFile(
       path.join(__dirname, "files", "fileToRead.txt"),
       {

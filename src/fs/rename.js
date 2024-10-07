@@ -8,9 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const rename = async () => {
   try {
-    await access(path.join(__dirname, "files", "wrongFilename.txt"));
-
-    fsPromises.rename(
+    await fsPromises.rename(
       path.join(__dirname, "files", "wrongFilename.txt"),
       path.join(__dirname, "files", "properFilename.md")
     );
