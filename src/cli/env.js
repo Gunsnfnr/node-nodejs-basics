@@ -1,7 +1,7 @@
 const parseEnv = () => {
   let result = "";
   for (const v in process.env) {
-    if (v.includes("RSS_")) {
+    if (v.startsWith("RSS_")) {
       const variableAndValue = `${v}=${process.env[v]}`;
       result =
         result === "" ? variableAndValue : `${result}; ${variableAndValue}`;
